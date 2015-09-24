@@ -1,0 +1,49 @@
+name:                rot-transformers
+version:             0.1.0.0
+synopsis:            transformers library without types & newtypes
+description:         a futile but fun exercise
+homepage:            https://github.com/adarqui/rot-transformers
+license:             MIT
+license-file:        LICENSE
+author:              Andrew Darqui
+maintainer:          andrew.darqui@gmail.com
+category:            Experimental
+build-type:          Simple
+cabal-version:       >=1.10
+
+library
+  exposed-modules:
+    Rot.Control.Monad.Trans.Cont
+    Rot.Control.Monad.Trans.Identity
+    Rot.Control.Monad.Trans.List
+    Rot.Control.Monad.Trans.Maybe
+    Rot.Control.Monad.Trans.Reader
+    Rot.Control.Monad.Trans.RWS
+    Rot.Control.Monad.Trans.RWS.Lazy
+    Rot.Control.Monad.Trans.RWS.Strict
+    Rot.Control.Monad.Trans.State
+    Rot.Control.Monad.Trans.State.Lazy
+    Rot.Control.Monad.Trans.State.Strict
+    Rot.Control.Monad.Trans.Writer
+    Rot.Control.Monad.Trans.Writer.Lazy
+    Rot.Control.Monad.Trans.Writer.Strict
+  build-depends:       base >=4.6 && <4.9
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  default-extensions:  RankNTypes, KindSignatures
+  ghc-options:         -Wall -Werror
+
+test-suite spec
+  type:             exitcode-stdio-1.0
+  default-language: Haskell2010
+  hs-source-dirs:   test
+  ghc-options:      -Wall
+  main-is:          Spec.hs
+  other-modules:    Test.State.LazySpec
+                  , Test.ReaderSpec
+  build-depends:    base
+                  , hspec >= 2.2
+                  , hspec-core >= 2.1.7
+                  , hspec-discover >= 2.2
+                  , QuickCheck
+                  , rot-transformers == 0.1.0.0
